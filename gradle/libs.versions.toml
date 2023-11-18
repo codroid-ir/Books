@@ -1,4 +1,12 @@
 [versions]
+projectApplicationId = "ir.codroid.books"
+projectVersionName = "1.0"
+projectMinSdkVersion = "23"
+projectTargetSdkVersion = "34"
+projectCompileSdkVersion = "34"
+projectVersionCode = "1"
+
+
 agp = "8.3.0-alpha05"
 kotlin = "1.9.0"
 core-ktx = "1.12.0"
@@ -8,6 +16,14 @@ espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.8.1"
 compose-bom = "2023.08.00"
+ksp = "1.9.10-1.0.13"
+
+hilt = "2.48"
+hiltNavigationCompose = "1.1.0"
+lottieAnimation = "6.1.0"
+navigationCompose = "2.7.5"
+retrofit = "2.9.0"
+loggingInterceptor = "4.11.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -24,8 +40,19 @@ ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
+compose-lottie-animation = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieAnimation" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
