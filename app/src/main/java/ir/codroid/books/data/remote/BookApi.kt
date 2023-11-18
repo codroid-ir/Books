@@ -30,6 +30,7 @@ interface BookApi {
 
     @PATCH("/books/{id}")
     suspend fun updateBookById(
+        @Path("id") id : String ,
         @Body title: String? = null,
         @Body author: String? = null,
         @Body genre: String? = null,
