@@ -13,7 +13,7 @@ data class BookDto(
     @SerializedName("genre")
     val genre: String,
     @SerializedName("yearPublished")
-    val yearPublished: String,
+    val yearPublished: Int,
     @SerializedName("checkedOut")
     val checkedOut: String,
     @SerializedName("createdAt")

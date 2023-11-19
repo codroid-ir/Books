@@ -1,5 +1,6 @@
 package ir.codroid.books.data.repository
 
+import ir.codroid.books.data.remote.ActionsDto
 import ir.codroid.books.data.remote.BookApi
 import ir.codroid.books.data.remote.BookDto
 import ir.codroid.books.data.util.BaseApiResponse
@@ -16,7 +17,7 @@ class BookRepositoryImpl @Inject constructor(
         safeApiCall { api.getBookById(id) }
 
 
-    override suspend fun deleteBookById(id: String): NetworkResult<String> =
+    override suspend fun deleteBookById(id: String): NetworkResult<ActionsDto> =
         safeApiCall { api.deleteBookById(id) }
 
     override suspend fun addBook(
@@ -24,7 +25,7 @@ class BookRepositoryImpl @Inject constructor(
         author: String,
         genre: String,
         yearPublished: Int,
-    ): NetworkResult<String> = safeApiCall {
+    ): NetworkResult<ActionsDto> = safeApiCall {
         api.addBook(title = title, author = author, genre = genre, yearPublished = yearPublished)
     }
 
@@ -36,7 +37,7 @@ class BookRepositoryImpl @Inject constructor(
         genre: String?,
         yearPublished: Int?,
         checkedOut: Boolean?,
-    ): NetworkResult<String> = safeApiCall {
+    ): NetworkResult<ActionsDto> = safeApiCall {
         api.updateBookById(
             id = id,
             title = title,
