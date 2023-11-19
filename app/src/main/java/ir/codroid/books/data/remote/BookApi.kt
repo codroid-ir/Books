@@ -1,5 +1,8 @@
 package ir.codroid.books.data.remote
 
+import ir.codroid.books.data.remote.model.ActionsDto
+import ir.codroid.books.data.remote.model.BookDto
+import ir.codroid.books.data.remote.model.BookParameter
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -21,20 +24,13 @@ interface BookApi {
 
     @POST("/books")
     suspend fun addBook(
-        @Body title: String,
-        @Body author: String,
-        @Body genre: String,
-        @Body yearPublished: Int,
+        @Body bookParameter: BookParameter,
     ): Response<ActionsDto>
 
     @PATCH("/books/{id}")
     suspend fun updateBookById(
-        @Path("id") id : String ,
-        @Body title: String? = null,
-        @Body author: String? = null,
-        @Body genre: String? = null,
-        @Body yearPublished: Int? = null,
-        @Body checkedOut: Boolean? = null,
+        @Path("id") id: String,
+        @Body bookParameter: BookParameter,
     ): Response<ActionsDto>
 
 }

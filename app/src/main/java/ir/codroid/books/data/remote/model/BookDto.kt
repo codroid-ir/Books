@@ -1,4 +1,4 @@
-package ir.codroid.books.data.remote
+package ir.codroid.books.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 import ir.codroid.books.domin.model.Book

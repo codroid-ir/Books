@@ -1,8 +1,9 @@
 package ir.codroid.books.data.repository
 
-import ir.codroid.books.data.remote.ActionsDto
 import ir.codroid.books.data.remote.BookApi
-import ir.codroid.books.data.remote.BookDto
+import ir.codroid.books.data.remote.model.ActionsDto
+import ir.codroid.books.data.remote.model.BookDto
+import ir.codroid.books.data.remote.model.BookParameter
 import ir.codroid.books.data.util.BaseApiResponse
 import ir.codroid.books.data.util.NetworkResult
 import ir.codroid.books.domin.repository.BookRepository
@@ -26,25 +27,33 @@ class BookRepositoryImpl @Inject constructor(
         genre: String,
         yearPublished: Int,
     ): NetworkResult<ActionsDto> = safeApiCall {
-        api.addBook(title = title, author = author, genre = genre, yearPublished = yearPublished)
+        api.addBook(
+            bookParameter = BookParameter(
+                title = title,
+                author = author,
+                genre = genre,
+                yearPublished = yearPublished
+            )
+        )
     }
 
 
     override suspend fun updateBookById(
         id: String,
-        title: String?,
-        author: String?,
-        genre: String?,
-        yearPublished: Int?,
-        checkedOut: Boolean?,
+        title: String,
+        author: String,
+        genre: String,
+        yearPublished: Int,
     ): NetworkResult<ActionsDto> = safeApiCall {
         api.updateBookById(
             id = id,
-            title = title,
-            author = author,
-            genre = genre,
-            yearPublished = yearPublished,
-            checkedOut = checkedOut
+            bookParameter = BookParameter(
+                title = title,
+                author = author,
+                genre = genre,
+                yearPublished = yearPublished
+
+            )
         )
     }
 }

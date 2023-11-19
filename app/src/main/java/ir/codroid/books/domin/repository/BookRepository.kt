@@ -1,7 +1,7 @@
 package ir.codroid.books.domin.repository
 
-import ir.codroid.books.data.remote.ActionsDto
-import ir.codroid.books.data.remote.BookDto
+import ir.codroid.books.data.remote.model.ActionsDto
+import ir.codroid.books.data.remote.model.BookDto
 import ir.codroid.books.data.util.NetworkResult
 
 interface BookRepository {
@@ -21,10 +21,9 @@ interface BookRepository {
 
     suspend fun updateBookById(
         id: String,
-        title: String? = null,
-        author: String? = null,
-        genre: String? = null,
-        yearPublished: Int? = null,
-        checkedOut: Boolean? = null,
+        title: String,
+        author: String,
+        genre: String,
+        yearPublished: Int,
     ): NetworkResult<ActionsDto>
 }

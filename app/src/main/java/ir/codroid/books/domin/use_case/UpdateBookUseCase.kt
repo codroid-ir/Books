@@ -1,6 +1,6 @@
 package ir.codroid.books.domin.use_case
 
-import ir.codroid.books.data.remote.ActionsDto
+import ir.codroid.books.data.remote.model.ActionsDto
 import ir.codroid.books.data.util.NetworkResult
 import ir.codroid.books.domin.repository.BookRepository
 import kotlinx.coroutines.flow.Flow
@@ -12,11 +12,10 @@ class UpdateBookUseCase @Inject constructor(
 ) {
     operator fun invoke(
         id: String,
-        title: String? = null,
-        author: String? = null,
-        genre: String? = null,
-        yearPublished: Int? = null,
-        checkedOut: Boolean? = null,
+        title: String ,
+        author: String ,
+        genre: String ,
+        yearPublished: Int ,
     ): Flow<NetworkResult<ActionsDto>> = flow {
         emit(NetworkResult.Loading())
         val message = repository.updateBookById(
@@ -25,7 +24,6 @@ class UpdateBookUseCase @Inject constructor(
             author = author,
             genre = genre,
             yearPublished = yearPublished,
-            checkedOut = checkedOut
         )
         emit(message)
     }
