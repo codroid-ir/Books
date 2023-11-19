@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import ir.codroid.books.data.remote.toBook
+import ir.codroid.books.data.remote.model.toBook
 import ir.codroid.books.data.util.NetworkResult
 import ir.codroid.books.domin.use_case.DeleteBookUseCase
 import ir.codroid.books.domin.use_case.GetBooksUseCase
@@ -85,7 +85,7 @@ class BookListViewModel @Inject constructor(
                 when (result) {
                     is NetworkResult.Error -> {
                         state = state.copy(
-                            showSnakeBar = true,
+                            showDialog = true,
                             deleteMessage = result.message
                         )
                     }
@@ -93,7 +93,7 @@ class BookListViewModel @Inject constructor(
                     is NetworkResult.Loading -> {}
                     is NetworkResult.Success -> {
                         state = state.copy(
-                            showSnakeBar = true,
+                            showDialog = true,
                             deleteMessage = result.data!!.message,
                             deletedBookId = id
                         )
@@ -106,7 +106,7 @@ class BookListViewModel @Inject constructor(
 
     fun setShowDialogValue(boolean: Boolean) {
         state = state.copy(
-            showSnakeBar = boolean
+            showDialog = boolean
         )
     }
 }

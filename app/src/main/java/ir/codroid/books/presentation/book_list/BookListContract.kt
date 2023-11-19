@@ -10,7 +10,7 @@ interface BookListContract {
         val books: List<Book>? = null,
         val isLoading: Boolean = false,
         val error: String? = null,
-        val showSnakeBar: Boolean = false,
+        val showDialog: Boolean = false,
         val deleteMessage: String? = null,
         val deletedBookId: String? = null,
         val showSearch :Boolean = false,

@@ -9,8 +9,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import ir.codroid.books.R
 import ir.codroid.books.domin.model.Book
+import ir.codroid.books.navigation.Screen
 import ir.codroid.books.presentation.book_list.component.BookListAppBar
 import ir.codroid.books.presentation.book_list.component.BookListContent
 import ir.codroid.books.presentation.ui.component.DisplayAlertDialog
@@ -20,6 +22,7 @@ import ir.codroid.books.presentation.ui.component.DisplayAlertDialog
 @Composable
 fun BookListRoute(
     viewModel: BookListViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
 
 
@@ -28,7 +31,9 @@ fun BookListRoute(
         onDelete = { bookId ->
             viewModel.event(BookListContract.Event.OnDelete(bookId))
         },
-        onBookClicked = {},
+        onBookClicked = {bookId ->
+            navController.navigate(route = Screen.BookDetail.route + "?bookId=$bookId")
+        },
         onSearch = { viewModel.event(BookListContract.Event.onSearch) },
         onCloseClicked = { viewModel.event(BookListContract.Event.onClose) },
         onDialogDismiss = { viewModel.setShowDialogValue(it) },
@@ -56,7 +61,7 @@ fun BookListScreen(
         message = state.deleteMessage ?: "",
         confirmText = "Ok",
         dismissText = null,
-        openDialog = state.showSnakeBar,
+        openDialog = state.showDialog,
         onDismiss = { onDialogDismiss(false) },
         onConfirm = { onDialogDismiss(false) },
 
