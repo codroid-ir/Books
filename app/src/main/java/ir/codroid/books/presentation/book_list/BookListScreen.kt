@@ -2,7 +2,12 @@ package ir.codroid.books.presentation.book_list
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +27,7 @@ import ir.codroid.books.presentation.ui.component.DisplayAlertDialog
 @Composable
 fun BookListRoute(
     viewModel: BookListViewModel = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
 ) {
 
 
@@ -31,7 +36,7 @@ fun BookListRoute(
         onDelete = { bookId ->
             viewModel.event(BookListContract.Event.OnDelete(bookId))
         },
-        onBookClicked = {bookId ->
+        onBookClicked = { bookId ->
             navController.navigate(route = Screen.BookDetail.route + "?bookId=$bookId")
         },
         onSearch = { viewModel.event(BookListContract.Event.onSearch) },
@@ -39,7 +44,8 @@ fun BookListRoute(
         onDialogDismiss = { viewModel.setShowDialogValue(it) },
         onTextChanged = { searchText ->
             viewModel.event(BookListContract.Event.OnSearchTextChanged(searchText))
-        }
+        },
+        onAddClicked = {navController.navigate(route = Screen.BookDetail.route)}
     )
 }
 
@@ -54,6 +60,7 @@ fun BookListScreen(
     onDialogDismiss: (Boolean) -> Unit,
     onCloseClicked: () -> Unit,
     onTextChanged: (String) -> Unit,
+    onAddClicked:() -> Unit
 ) {
 
     DisplayAlertDialog(
@@ -77,6 +84,16 @@ fun BookListScreen(
                 onTextChanged = onTextChanged
             )
         },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {onAddClicked()},
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.add_book)
+                )
+            }
+        }
     ) {
         BookListContent(
             state = state,
@@ -125,6 +142,7 @@ fun BookListScreenPreview() {
             isLoading = false,
             error = null,
         ),
+        {},
         {},
         {},
         {},
