@@ -1,6 +1,6 @@
 package ir.codroid.books.domin.use_case
 
-import ir.codroid.books.data.remote.BookDto
+import ir.codroid.books.data.remote.model.BookDto
 import ir.codroid.books.data.util.NetworkResult
 import ir.codroid.books.domin.repository.BookRepository
 import kotlinx.coroutines.flow.Flow

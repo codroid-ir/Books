@@ -1,9 +1,8 @@
-package ir.codroid.books.domin.model
+package ir.codroid.books.data.remote.model
 
-data class Book(
+data class BookParameter(
     val title: String,
     val author: String,
-    val id: String,
     val genre: String,
     val yearPublished: Int,
 )

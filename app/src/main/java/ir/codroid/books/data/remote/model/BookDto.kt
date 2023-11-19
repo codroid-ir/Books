@@ -1,4 +1,4 @@
-package ir.codroid.books.data.remote
+package ir.codroid.books.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 import ir.codroid.books.domin.model.Book
@@ -13,7 +13,7 @@ data class BookDto(
     @SerializedName("genre")
     val genre: String,
     @SerializedName("yearPublished")
-    val yearPublished: String,
+    val yearPublished: Int,
     @SerializedName("checkedOut")
     val checkedOut: String,
     @SerializedName("createdAt")

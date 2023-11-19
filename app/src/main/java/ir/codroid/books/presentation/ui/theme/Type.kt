@@ -1,4 +1,4 @@
-package ir.codroid.books.ui.theme
+package ir.codroid.books.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
